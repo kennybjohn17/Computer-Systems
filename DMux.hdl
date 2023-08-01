@@ -6,7 +6,7 @@
 /**
  * Demultiplexor:
  * {a, b} = {in, 0} if selected == 0
- *          {0, in} if selected == 1
+ *          {0, in} otherwise
  */
 
 CHIP DMux {
@@ -16,5 +16,5 @@ CHIP DMux {
     PARTS:
     Not(in=selected,out=notselected);
     And(a=in,b=notselected,out=a);
-    And(a=in,b=selected,out=b);
+    And(in=notselected,out=b);
 }
