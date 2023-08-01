@@ -5,16 +5,16 @@
 
 /**
  * Demultiplexor:
- * {a, b} = {in, 0} if selected == 0
+ * {a, b} = {in, 0} if sel == 0
  *          {0, in} otherwise
  */
 
 CHIP DMux {
-    IN in, selected;
+    IN in, sel;
     OUT a, b;
 
     PARTS:
-    Not(in=selected, out=notselected);
-    And(a=in, b=notselected, out=a);
-    Not(in=notselected, out=b);
+    Not(in=sel, out=notsel);
+    And(a=in, b=notsel, out=a);
+    Not(in=notsel, out=b);
 }
